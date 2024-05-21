@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -108,7 +108,7 @@ public class JavaElementsResolver {
 
 	private Set<TestDescriptor> resolveElementWithChildren(AnnotatedElement element,
 			Set<TestDescriptor> potentialParents) {
-		Set<TestDescriptor> resolvedDescriptors = new HashSet<>();
+		Set<TestDescriptor> resolvedDescriptors = new LinkedHashSet<>();
 		potentialParents.forEach(parent -> {
 			resolvedDescriptors.addAll(resolve(element, parent));
 		});

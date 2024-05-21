@@ -26,7 +26,7 @@ import java.io.File;
 import java.io.StringWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -155,11 +155,11 @@ public class SourceFileCollector {
    */
   public void computeDiffEntries() throws Exception {
     Set<SimpleDiffEntry> oursDiffEntries =
-        new HashSet<>(
+        new LinkedHashSet<>(
             GitService.listDiffFilesJava(
                 repository, mergeScenario.baseCommitID, mergeScenario.oursCommitID));
     Set<SimpleDiffEntry> theirsDiffEntries =
-        new HashSet<>(
+        new LinkedHashSet<>(
             GitService.listDiffFilesJava(
                 repository, mergeScenario.baseCommitID, mergeScenario.theirsCommitID));
     // add one-side modified entries to the other side's entries
@@ -183,12 +183,12 @@ public class SourceFileCollector {
     mergeScenario.oursDiffEntries = new ArrayList<>(oursDiffEntries);
     mergeScenario.theirsDiffEntries = new ArrayList<>(theirsDiffEntries);
 
-    Set<SimpleDiffEntry> union = new HashSet<>();
+    Set<SimpleDiffEntry> union = new LinkedHashSet<>();
     union.addAll(mergeScenario.oursDiffEntries);
     union.addAll(mergeScenario.theirsDiffEntries);
     mergeScenario.baseDiffEntries = new ArrayList<>(union);
 
-    Set<SimpleDiffEntry> intersection = new HashSet<>();
+    Set<SimpleDiffEntry> intersection = new LinkedHashSet<>();
     intersection.addAll(mergeScenario.oursDiffEntries);
     intersection.retainAll(mergeScenario.theirsDiffEntries);
     mergeScenario.bothModifiedEntries = new ArrayList<>(intersection);

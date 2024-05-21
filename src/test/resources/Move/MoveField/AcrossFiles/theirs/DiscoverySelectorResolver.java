@@ -13,7 +13,7 @@ package org.junit.gen5.engine.junit5.discoveryNEW;
 import static java.lang.String.format;
 import static org.junit.gen5.commons.util.ReflectionUtils.findMethods;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 import org.junit.gen5.engine.EngineDiscoveryRequest;
@@ -41,7 +41,7 @@ public class DiscoverySelectorResolver {
 	}
 
 	private JavaElementsResolver createJavaElementsResolver(TestDescriptor engineDescriptor) {
-		Set<ElementResolver> resolvers = new HashSet<>();
+		Set<ElementResolver> resolvers = new LinkedHashSet<>();
 		resolvers.add(new TestContainerResolver());
 		resolvers.add(new TestMethodResolver());
 		return new JavaElementsResolver(engineDescriptor, resolvers);

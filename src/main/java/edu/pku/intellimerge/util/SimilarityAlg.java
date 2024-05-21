@@ -17,7 +17,7 @@ import info.debatty.java.stringsimilarity.Cosine;
 import org.eclipse.jdt.core.dom.ASTParser;
 
 import java.io.IOException;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -190,10 +190,10 @@ public class SimilarityAlg {
    * @return
    */
   private static double jaccard(Set s1, Set s2) {
-    Set<String> union = new HashSet<>();
+    Set<String> union = new LinkedHashSet<>();
     union.addAll(s1);
     union.addAll(s2);
-    Set<String> intersection = new HashSet<>();
+    Set<String> intersection = new LinkedHashSet<>();
     intersection.addAll(s1);
     intersection.retainAll(s2);
     if (union.size() <= 0) {

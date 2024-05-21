@@ -15,7 +15,7 @@ import java.nio.file.Path;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -33,7 +33,7 @@ import static com.github.javaparser.utils.SourceRoot.Callback.Result.SAVE;
  */
 public class SourceRoot {
     private final Path root;
-    private final Map<Path, ParseResult<CompilationUnit>> content = new HashMap<>();
+    private final Map<Path, ParseResult<CompilationUnit>> content = new LinkedHashMap<>();
     public interface Callback {
         enum Result {SAVE, DONT_SAVE}
 

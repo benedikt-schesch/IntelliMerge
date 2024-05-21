@@ -13,7 +13,7 @@ package org.junit.gen5.engine.junit5;
 import static java.util.stream.Collectors.toList;
 
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
+import java.util.LinkedLinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;

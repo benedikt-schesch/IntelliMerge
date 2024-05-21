@@ -31,8 +31,8 @@ public class MethodDeclMatcher {
       List<SemanticNode> unmatchedMethods1,
       List<SemanticNode> unmatchedMethods2) {
     // use bipartite to match methods according to similarity
-    Set<SemanticNode> partition1 = new HashSet<>();
-    Set<SemanticNode> partition2 = new HashSet<>();
+    Set<SemanticNode> partition1 = new LinkedHashSet<>();
+    Set<SemanticNode> partition2 = new LinkedHashSet<>();
     // should be simple graph: no self-loops and no multiple edges
     DefaultUndirectedWeightedGraph<SemanticNode, DefaultWeightedEdge> biPartite =
         new DefaultUndirectedWeightedGraph<>(DefaultWeightedEdge.class);
@@ -80,7 +80,7 @@ public class MethodDeclMatcher {
     BiMap<SemanticNode, SemanticNode> reversedMatching = matching.one2oneMatchings.inverse();
     // union the context of matched callers
     // if the union context confidence > confidence before, consider it as an extraction
-    Map<SemanticNode, List<SemanticNode>> candidates = new HashMap<>();
+    Map<SemanticNode, List<SemanticNode>> candidates = new LinkedHashMap<>();
     for (SemanticNode possiblyAddedMethod : unmatchedMethods) {
       List<SemanticNode> callers =
           possiblyAddedMethod.context.getIncomingEdges().stream()
@@ -130,7 +130,7 @@ public class MethodDeclMatcher {
    */
   public void matchInlineMethod(TwowayMatching matching, List<SemanticNode> unmatchedMethods) {
     BiMap<SemanticNode, SemanticNode> one2oneMatchings = matching.one2oneMatchings;
-    Map<SemanticNode, List<SemanticNode>> candidates = new HashMap<>();
+    Map<SemanticNode, List<SemanticNode>> candidates = new LinkedHashMap<>();
     for (SemanticNode possiblyAddedMethod : unmatchedMethods) {
       List<SemanticNode> callers =
           possiblyAddedMethod.context.getIncomingEdges().stream()

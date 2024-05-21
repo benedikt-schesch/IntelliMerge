@@ -56,14 +56,14 @@ public class GraphBuilder {
    * if the symbol is internal: draw the edge in graph;
    * else:
    */
-  private Map<SemanticNode, List<String>> importEdges = new HashMap<>();
-  private Map<SemanticNode, List<String>> extendEdges = new HashMap<>();
-  private Map<SemanticNode, List<String>> implementEdges = new HashMap<>();
-  private Map<SemanticNode, List<String>> declObjectEdges = new HashMap<>();
-  private Map<SemanticNode, List<String>> initObjectEdges = new HashMap<>();
-  private Map<SemanticNode, List<String>> readFieldEdges = new HashMap<>();
-  private Map<SemanticNode, List<String>> writeFieldEdges = new HashMap<>();
-  private Map<SemanticNode, List<String>> callMethodEdges = new HashMap<>();
+  private Map<SemanticNode, List<String>> importEdges = new LinkedHashMap<>();
+  private Map<SemanticNode, List<String>> extendEdges = new LinkedHashMap<>();
+  private Map<SemanticNode, List<String>> implementEdges = new LinkedHashMap<>();
+  private Map<SemanticNode, List<String>> declObjectEdges = new LinkedHashMap<>();
+  private Map<SemanticNode, List<String>> initObjectEdges = new LinkedHashMap<>();
+  private Map<SemanticNode, List<String>> readFieldEdges = new LinkedHashMap<>();
+  private Map<SemanticNode, List<String>> writeFieldEdges = new LinkedHashMap<>();
+  private Map<SemanticNode, List<String>> callMethodEdges = new LinkedHashMap<>();
 
   private MergeScenario mergeScenario;
   private Side side;

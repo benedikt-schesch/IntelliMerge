@@ -6,7 +6,7 @@ import org.jgrapht.io.Attribute;
 import org.jgrapht.io.AttributeType;
 import org.jgrapht.io.ComponentAttributeProvider;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class TypeProvider implements ComponentAttributeProvider {
@@ -14,13 +14,13 @@ public class TypeProvider implements ComponentAttributeProvider {
     public Map<String, Attribute> getComponentAttributes(Object component) {
         if(component instanceof SemanticNode){
             SemanticNode node = (SemanticNode)component;
-            Map<String, Attribute> map = new HashMap<>();
+            Map<String, Attribute> map = new LinkedHashMap<>();
             map.put("type", new NodeAttribute(node));
             return map;
         }
         if(component instanceof SemanticEdge){
             SemanticEdge edge = (SemanticEdge)component;
-            Map<String, Attribute> map = new HashMap<>();
+            Map<String, Attribute> map = new LinkedHashMap<>();
             map.put("type", new EdgeAttribute(edge));
             return map;
         }

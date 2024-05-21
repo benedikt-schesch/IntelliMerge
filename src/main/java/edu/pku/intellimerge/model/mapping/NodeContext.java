@@ -2,8 +2,8 @@ package edu.pku.intellimerge.model.mapping;
 
 import edu.pku.intellimerge.model.SemanticEdge;
 
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -12,8 +12,8 @@ public class NodeContext {
   private Set<SemanticEdge> outgoingEdges;
 
   // use map to save vectors for random access
-  private Map<Integer, Integer> incomingVector = new HashMap<>();
-  private Map<Integer, Integer> outgoingVector = new HashMap<>();
+  private Map<Integer, Integer> incomingVector = new LinkedHashMap<>();
+  private Map<Integer, Integer> outgoingVector = new LinkedHashMap<>();
 
   public NodeContext(
       Set<SemanticEdge> incomingEdges,
@@ -64,15 +64,15 @@ public class NodeContext {
   }
 
   public NodeContext join(NodeContext context) {
-    Set<SemanticEdge> combinedIncomingEdges = new HashSet<>();
-    Set<SemanticEdge> combinedOutgoingEdges = new HashSet<>();
+    Set<SemanticEdge> combinedIncomingEdges = new LinkedHashSet<>();
+    Set<SemanticEdge> combinedOutgoingEdges = new LinkedHashSet<>();
     combinedIncomingEdges.addAll(this.incomingEdges);
     combinedIncomingEdges.addAll(context.getIncomingEdges());
     combinedOutgoingEdges.addAll(this.outgoingEdges);
     combinedOutgoingEdges.addAll(context.getOutgoingEdges());
 
-    Map<Integer, Integer> combinedInVec = new HashMap<>(this.incomingVector);
-    Map<Integer, Integer> combinedOutVec = new HashMap<>(this.outgoingVector);
+    Map<Integer, Integer> combinedInVec = new LinkedHashMap<>(this.incomingVector);
+    Map<Integer, Integer> combinedOutVec = new LinkedHashMap<>(this.outgoingVector);
     context
         .getIncomingVector()
         .forEach((key, value) -> combinedInVec.merge(key, value, (v1, v2) -> (v1 + v2)));

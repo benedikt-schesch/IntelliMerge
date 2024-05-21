@@ -29,7 +29,7 @@ import static com.github.javaparser.utils.CodeGenerationUtils.*;
  */
 public class SourceRoot {
     private final Path root;
-    private final Map<Path, ParseResult<CompilationUnit>> content = new HashMap<>();
+    private final Map<Path, ParseResult<CompilationUnit>> content = new LinkedHashMap<>();
 
     public SourceRoot(Path root) {
         this.root = root.normalize();

@@ -12,7 +12,7 @@ package org.junit.gen5.engine.junit5;
 
 import static java.util.stream.Collectors.toList;
 
-import java.util.LinkedHashMap;
+import java.util.LinkedLinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.List;
@@ -94,7 +94,7 @@ public class JUnit5TestEngine implements TestEngine {
 	}
 
 	private Map<TestDescriptor, TestExecutionNode> buildTestExecutionNodesTree(EngineExecutionContext context) {
-		Map<TestDescriptor, TestExecutionNode> nodes = new LinkedHashMap<>();
+		Map<TestDescriptor, TestExecutionNode> nodes = new LinkedLinkedHashMap<>();
 		for (TestDescriptor testDescriptor : context.getEngineDescriptor().allChildren()) {
 			nodes.put(testDescriptor, TestExecutionNodeResolver.forDescriptor(testDescriptor));
 		}

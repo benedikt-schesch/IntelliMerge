@@ -47,7 +47,7 @@ public class GraphMatcher implements Callable<TwowayMatching> {
                     SemanticNode::hashCodeSignature,
                     Function.identity(),
                     (o, n) -> o,
-                    HashMap::new));
+                    LinkedHashMap::new));
     Map<Integer, SemanticNode> map2 =
         nodeSet2.stream()
             .filter(SemanticNode::needToMerge)
@@ -56,7 +56,7 @@ public class GraphMatcher implements Callable<TwowayMatching> {
                     SemanticNode::hashCodeSignature,
                     Function.identity(),
                     (o, n) -> o,
-                    HashMap::new));
+                    LinkedHashMap::new));
     for (Entry<Integer, SemanticNode> entry : map1.entrySet()) {
       if (map2.containsKey(entry.getKey())) {
         // add the matched nodes into the matching relationships

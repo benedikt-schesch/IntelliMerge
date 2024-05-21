@@ -22,7 +22,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -185,7 +185,7 @@ public class GitService {
               .filter(diffEntry -> isJavaFile(diffEntry.getNewPath()))
               .collect(Collectors.toList());
 
-      List<SimpleDiffEntry> javaDiffs = new ArrayList<>(new HashSet<>());
+      List<SimpleDiffEntry> javaDiffs = new ArrayList<>(new LinkedHashSet<>());
       for (DiffEntry diffEntry : javaDiffEntries) {
         javaDiffs.add(
             new SimpleDiffEntry(

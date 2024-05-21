@@ -35,7 +35,7 @@ public class SourceRoot {
 =======
     private final Path root;
 >>>>>>> theirs
-    private final Map<Path, ParseResult<CompilationUnit>> content = new HashMap<>();
+    private final Map<Path, ParseResult<CompilationUnit>> content = new LinkedHashMap<>();
 
     public SourceRoot(Path rootPath) {
         this.rootPath = rootPath.normalize();

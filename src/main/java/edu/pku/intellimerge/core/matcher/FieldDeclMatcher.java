@@ -9,7 +9,7 @@ import org.jgrapht.alg.matching.MaximumWeightBipartiteMatching;
 import org.jgrapht.graph.DefaultUndirectedWeightedGraph;
 import org.jgrapht.graph.DefaultWeightedEdge;
 
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -27,8 +27,8 @@ public class FieldDeclMatcher {
       List<SemanticNode> unmatchedFields1,
       List<SemanticNode> unmatchedFields2) {
     // use bipartite to match methods according to similarity
-    Set<SemanticNode> partition1 = new HashSet<>();
-    Set<SemanticNode> partition2 = new HashSet<>();
+    Set<SemanticNode> partition1 = new LinkedHashSet<>();
+    Set<SemanticNode> partition2 = new LinkedHashSet<>();
     DefaultUndirectedWeightedGraph<SemanticNode, DefaultWeightedEdge> biPartite =
         new DefaultUndirectedWeightedGraph<>(DefaultWeightedEdge.class);
 

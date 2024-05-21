@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -41,7 +41,7 @@ public class DiscoverySelectorResolver {
 	private static final Logger LOG = Logger.getLogger(DiscoverySelectorResolver.class.getName());
 
 	private final JUnit5EngineDescriptor engineDescriptor;
-	private final Set<ElementResolver> resolvers = new HashSet<>();
+	private final Set<ElementResolver> resolvers = new LinkedHashSet<>();
 
 	public DiscoverySelectorResolver(JUnit5EngineDescriptor engineDescriptor) {
 		this.engineDescriptor = engineDescriptor;
@@ -130,7 +130,7 @@ public class DiscoverySelectorResolver {
 
 	private Set<TestDescriptor> resolveElementWithChildren(AnnotatedElement element,
 			Set<TestDescriptor> potentialParents) {
-		Set<TestDescriptor> resolvedDescriptors = new HashSet<>();
+		Set<TestDescriptor> resolvedDescriptors = new LinkedHashSet<>();
 		potentialParents.forEach(parent -> {
 			resolvedDescriptors.addAll(resolve(element, parent));
 		});

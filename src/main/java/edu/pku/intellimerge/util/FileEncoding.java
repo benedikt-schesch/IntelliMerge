@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -17,7 +17,7 @@ import java.util.Map;
  */
 public class FileEncoding {
 
-  private static Map<File, String> encodings = new HashMap<File, String>();
+  private static Map<File, String> encodings = new LinkedHashMap<File, String>();
   private static final String DEFAULT_ENCODING = "UTF-8";
 
   public static void analyseFiles(File... files) {
