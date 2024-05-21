@@ -189,7 +189,7 @@ public class IntelliMerge {
     // 1. Collect diff java files and imported files between ours/theirs commit and base commit
     // Collect source files to be analyzed in the system temp dir
     // For Windows: C:\Users\USERNAME\AppData\Local\Temp\IntelliMerge\
-    String collectedDir = System.getProperty("java.io.tmpdir") + "IntelliMerge2" + File.separator;
+    String collectedDir = new File(System.getProperty("java.io.tmpdir"), "IntelliMerge2").getPath() + File.separator;
 
     SourceFileCollector collector = new SourceFileCollector(repoPath, branchNames, collectedDir);
 
@@ -198,7 +198,7 @@ public class IntelliMerge {
 
     // 2. Build graphs from collected files
     Stopwatch stopwatch = Stopwatch.createStarted();
-    ExecutorService executorService = Executors.newFixedThreadPool(3);
+    ExecutorService executorService = Executors.newSingleThreadExecutor();
 
     MergeScenario mergeScenario = collector.getMergeScenario();
     Future<Graph<SemanticNode, SemanticEdge>> oursBuilder =
